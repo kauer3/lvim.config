@@ -20,7 +20,8 @@ lvim.leader = "space"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.normal_mode["<M-e>"] = "<cmd>NvimTreeToggle<CR>"
+lvim.lsp.diagnostics.virtual_text = false
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- lvim.builtin.telescope.on_config_done = function()
@@ -113,7 +114,12 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  {"windwp/nvim-ts-autotag"},
+  {
+    "windwp/nvim-ts-autotag",
+    config = function ()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
   {
     'phaazon/hop.nvim',
     as = 'hop',
@@ -135,15 +141,20 @@ lvim.plugins = {
   },
   {"tpope/vim-surround"},
   {"tpope/vim-repeat"},
+  {"wellle/targets.vim"},
+  {"kauer3/paste-replace.vim"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
   { "ColorScheme", "*", "hi Normal ctermbg=none guibg=none" },
+  { "ColorScheme", "*", "hi MsgArea ctermbg=none guibg=none" },
+  { "ColorScheme", "*", "hi MsgSeparator ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi LineNr ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi SignColumn ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi NonText ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi EndOfBuffer ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi NvimTreeNormal ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi NvimTreeVertSplit ctermbg=none guibg=none" },
+  { "ColorScheme", "*", "hi NormalNC ctermbg=none guibg=none" },
 }
