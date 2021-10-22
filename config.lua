@@ -99,6 +99,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   end
 -- end
 
+-- lvim.lang.typescriptreact.linters = {
+--   {
+--     exe = "editorconfig"
+--   }
+-- }
 -- set a formatter if you want to override the default lsp one (if it exists)
 -- lvim.lang.python.formatters = {
 --   {
@@ -142,7 +147,23 @@ lvim.plugins = {
   {"tpope/vim-surround"},
   {"tpope/vim-repeat"},
   {"wellle/targets.vim"},
-  {"kauer3/paste-replace.vim"},
+  {"inkarkat/vim-ReplaceWithRegister"},
+  {"prettier/vim-prettier", run="yarn install"},
+  {"editorconfig/editorconfig-vim"},
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "*" }, {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      })
+    end,
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -157,4 +178,5 @@ lvim.autocommands.custom_groups = {
   { "ColorScheme", "*", "hi NvimTreeNormal ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi NvimTreeVertSplit ctermbg=none guibg=none" },
   { "ColorScheme", "*", "hi NormalNC ctermbg=none guibg=none" },
+  -- { "ColorScheme", "*", "hi CursorLine ctermbg=none guibg=none" },
 }
