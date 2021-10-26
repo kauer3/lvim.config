@@ -16,11 +16,15 @@ lvim.colorscheme = "onedarker"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
--- lvim.keys.insert_mode["jj"] = "<ESC>"
+lvim.keys.insert_mode["jj"] = "<ESC>"
+lvim.keys.normal_mode["<CR>"] = "i<CR><ESC>"
+lvim.keys.normal_mode["<Tab>"] = ">>"
+lvim.keys.normal_mode["<S-Tab>"] = "<<"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
 lvim.keys.normal_mode["<M-e>"] = "<cmd>NvimTreeToggle<CR>"
+lvim.keys.normal_mode["<Space>e"] = ""
 lvim.lsp.diagnostics.virtual_text = false
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
